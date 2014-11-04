@@ -1,4 +1,6 @@
 {
+  "manifest_version": 2,
+
   "name": "Chrome_Test",
   "version": "1.0",
   "description": "A simple chrome extension example",
