@@ -1,0 +1,11 @@
+{
+  "name": "Chrome_Test",
+  "version": "1.0",
+  "description": "A simple chrome extension example",
+  "icons": {"128": "smile.png"},
+  "browser_action": {
+    "default_icon": "smile.png",
+    "default_title": "Chrome_Test",
+    "popup": "popup.html"
+  }
+}
