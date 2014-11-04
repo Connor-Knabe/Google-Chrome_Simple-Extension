@@ -8,6 +8,6 @@
   "browser_action": {
     "default_icon": "smile.png",
     "default_title": "Chrome_Test",
-    "popup": "popup.html"
+    "default_popup": "popup.html"
   }
 }
