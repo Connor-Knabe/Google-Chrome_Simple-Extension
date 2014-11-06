@@ -1,9 +1,12 @@
 var express = require('express'); var bodyParser = 
-require('body-parser'); var app = express(); app.use(bodyParser()); 
-var http = require('http');
+require('body-parser'); 
+
 var app = express.createServer();
+app.use(bodyParser()); 
+var http = require('http');
 var url = require('url');
 var request = require('request');
+
 app.get('/', function(req, res){
   var html = '<form action="/" method="post">' +
                'Enter your name:' +
