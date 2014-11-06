@@ -27,7 +27,8 @@ app.get('/', function(req, res){
                '<button type="submit">Submit</button>' +
             '</form>';*/
 
-    res.render('index');
+    console.log("/");
+    res.render('submit');
 });
 app.post('/', function(req, res){
     var movieTitle = req.body.movieTitle;
