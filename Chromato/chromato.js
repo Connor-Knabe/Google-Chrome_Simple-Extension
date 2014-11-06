@@ -38,8 +38,8 @@ app.post('/submitMovie', function(req, res){
 		if (!error && response.statusCode == 200) {
 			console.log(body);
 			var parsedData = JSON.parse(body);
-			console.log(parsedData['movies'][0]['title']);
-            res.render('movieResults',{movieTitle: parsedData['movies'][0]['title'],submit: true})
+			console.log(parsedData['movies'][0]);
+            res.render('movieResults',{movieTitle: parsedData['movies'][0]})
 		}
 
 	});
