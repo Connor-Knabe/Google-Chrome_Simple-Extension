@@ -11,9 +11,12 @@ var request = require('request');
 
 app.get('/', function(req, res){
     var html = '<form action="/" method="post">' +
-               'Enter your name:' +
-               '<input type="text" name="movieTitle" placeholder="..." />' +
- 			   '<input type="text" name="apiKey" placeholder="apikey" />' +
+               'Welcome to Chromato:' +
+			   '<br>' +
+               '<input type="text" name="movieTitle" placeholder="Movie Title" />' +
+ 			   '<br>' +
+			   '<input type="text" name="apiKey" placeholder="Api Key" />' +
+			   '<br>' +
 			   '<input type="text" name="page_limit" placeholder="page limit" />'+
                '<br>' +
                '<button type="submit">Submit</button>' +
@@ -22,11 +25,12 @@ app.get('/', function(req, res){
     res.send(html);
 });
 app.post('/', function(req, res){
-    var movieTitle = req.body.userName;
-	var 
+    var movieTitle = req.body.movieTitle;
+	var apiKey = req.body.apiKey;
+    var pageLimit = req.body.page_limit;	
+ 
 
-
-    var html = 'Hello: ' + userName + '.<br>' +
+    var html = 'Movie Title is: ' + movieTitle + '.<br>' +
              '<a href="/">Try again.</a>';
     res.send(html);
 });
