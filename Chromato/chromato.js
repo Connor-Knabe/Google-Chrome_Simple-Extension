@@ -3,7 +3,8 @@ var bodyParser = require('body-parser');
 var http = require('http');
 var url = require('url');
 var request = require('request');
-var app = express.createServer();
+var app = express();
+
 app.use(bodyParser());
 //app.use(bodyParser.urlencoded());
 //app.use(bodyParser.json());
