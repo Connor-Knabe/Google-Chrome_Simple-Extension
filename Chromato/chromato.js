@@ -28,10 +28,18 @@ app.post('/', function(req, res){
     var movieTitle = req.body.movieTitle;
 	var apiKey = req.body.apiKey;
     var pageLimit = req.body.page_limit;	
- 
+ 	options = {
+		protocol: "http:",
+		host: 'api.rottentomatoes.com',
+		pathname: '/api/public/v1.0/movies.json',
+		query: { apikey:apiKey, q:movieTitle, page_limit:pageLimit } 
+	}
+	var rottenUrl = url.format(options);
+	console.log(rottenUrl);
+	request(rottenUrl).pipe(res);
 
-    var html = 'Movie Title is: ' + movieTitle + '.<br>' +
-             '<a href="/">Try again.</a>';
-    res.send(html);
+   // var html = 'Movie Title is: ' + movieTitle + '.<br>' +
+    //         '<a href="/">Try again.</a>';
+    //res.send(html);
 });
 app.listen(80);
