@@ -15,49 +15,12 @@ app.configure(function() {
 });
 
 app.get('/', function(req, res){
-    /*var html = '<form action="/" method="post">' +
-               'Welcome to Chromato:' +
-			   '<br>' +
-               '<input type="text" name="movieTitle" placeholder="Movie Title" />' +
- 			   '<br>' +
-			   '<input type="text" name="apiKey" placeholder="Api Key" />' +
-			   '<br>' +
-			   '<input type="text" name="page_limit" placeholder="page limit" />'+
-               '<br>' +
-               '<button type="submit">Submit</button>' +
-            '</form>';*/
-
     console.log("/");
-    res.render('submit');
-});
-
-app.get('/submit', function(req, res){
-    /*var html = '<form action="/" method="post">' +
-               'Welcome to Chromato:' +
-               '<br>' +
-               '<input type="text" name="movieTitle" placeholder="Movie Title" />' +
-                '<br>' +
-               '<input type="text" name="apiKey" placeholder="Api Key" />' +
-               '<br>' +
-               '<input type="text" name="page_limit" placeholder="page limit" />'+
-               '<br>' +
-               '<button type="submit">Submit</button>' +
-            '</form>';*/
-
-    console.log("/submit");
-
-    res.redirect('/login');
-//    res.render('submit', {user: "Connor"});
-});
-
-app.get('/login', function(req, res){
-
-    console.log("/login");
-
+    res.render('index',{submit: true});
 });
 
 
-app.post('/', function(req, res){
+app.post('/submitMovie', function(req, res){
     var movieTitle = req.body.movieTitle;
 	var apiKey = req.body.apiKey;
     var pageLimit = req.body.page_limit;
@@ -76,6 +39,7 @@ app.post('/', function(req, res){
 			console.log(body);
 			var parsedData = JSON.parse(body);
 			console.log(parsedData['movies'][0]['title']);
+            res.render('movieResults',{movieTitle: parsedData['movies'][0]['title'],submit: true})
 		}
 
 	});

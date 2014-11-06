@@ -1,0 +1,19 @@
+<html>
+
+	<h2>Movie Title, <%= movieTitle %></h2>
+
+
+	<form action = "/submitMovie" method = "post"> 
+		Welcome to Chromato:
+		<br>
+		<input type="text" name="movieTitle" placeholder="Movie Title" />	
+		<br>	
+		<input type="text" name="apiKey" placeholder="Api Key" />
+		<br>
+		<input type="text" name="page_limit" placeholder="page limit" />
+		<br>
+	    <button type="submit">Submit</button>
+	</form>
+	
+
+</html>
