@@ -12,9 +12,9 @@ var request = require('request');
 app.get('/', function(req, res){
     var html = '<form action="/" method="post">' +
                'Enter your name:' +
-               '<input type="text" name="movieTitle" placeholder="..." />' 
-+ 			   '<input type="text" name="apiKey" placeholder="apikey" />'
-+			   
+               '<input type="text" name="movieTitle" placeholder="..." />' +
+ 			   '<input type="text" name="apiKey" placeholder="apikey" />' +
+			   '<input type="text" name="page_limit" placeholder="page limit" />'+
                '<br>' +
                '<button type="submit">Submit</button>' +
             '</form>';
