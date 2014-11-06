@@ -2,7 +2,9 @@
 //url:port/apikey/(insert key)/q/(insert movie)/page_limit/(insert page limit)
 var express = require('express');
 var http = require('http');
-var app = express.createServer();
+
+var app = express();
+http.createServer(app);
 var url = require('url');
 var request = require('request');
 app.get('/apikey/:api/q/:query/page_limit/:limit', function(req, response){
@@ -18,6 +20,6 @@ app.get('/apikey/:api/q/:query/page_limit/:limit', function(req, response){
 	}
 	var rottenUrl = url.format(options);
 	console.log(rottenUrl);
-	request(rottenUrl).pipe(response);
+	req(rottenUrl).pipe(response);
 });
 app.listen(1337);
