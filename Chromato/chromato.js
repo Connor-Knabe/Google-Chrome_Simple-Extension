@@ -38,6 +38,15 @@ app.post('/', function(req, res){
 	console.log(rottenUrl);
 	request(rottenUrl).pipe(res);
 
+	request(rottenUrl, function(error, response, body){
+		if (!error && response.statusCode == 200) {
+			console.log(body);
+			var parsedData = JSON.parse(body);
+			console.log(parsedData['movies'][0]['title']);
+		}
+
+	});
+
    // var html = 'Movie Title is: ' + movieTitle + '.<br>' +
     //         '<a href="/">Try again.</a>';
     //res.send(html);
