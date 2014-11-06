@@ -1,16 +1,5 @@
 <html>
 
-	<h2>Movie Title: <%= movieTitle.title %></h2>
-	<h2>Movie Year: <%= movieTitle.year %></h2>
-	<h2>Movie Rating: <%= movieTitle.mpaa_rating %></h2>
-	<h2>Movie Runtime: <%= movieTitle.runtime %></h2>
-
-	
-	
-
-	<br>
-	
-
 	<form action = "/submitMovie" method = "post"> 
 		Welcome to Chromato:
 		<br>
@@ -22,6 +11,15 @@
 		<br>
 	    <button type="submit">Submit</button>
 	</form>
+	<br>
 	
+
+	<h2>Movie Title: <%= movieTitle.title %></h2>
+	<h2>Movie Year: <%= movieTitle.year %></h2>
+	<h2>Movie Rating: <%= movieTitle.mpaa_rating %></h2>
+	<h2>Movie Runtime: <%= movieTitle.runtime %></h2>	
+
+
+
 
 </html>

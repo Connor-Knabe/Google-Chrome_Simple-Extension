@@ -5,21 +5,22 @@ var url = require('url');
 var request = require('request');
 var app = express();
 
-app.use(bodyParser());
-//app.use(bodyParser.urlencoded());
-//app.use(bodyParser.json());
+//app.use(bodyParser());
+app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.json());
 
+//using ejs templates
 app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
 });
 
 app.get('/', function(req, res){
-    console.log("/");
     res.render('index',{submit: true});
 });
 
 
+//When the user submits the form the first time they are taken to this new movieResults.ejs page
 app.post('/submitMovie', function(req, res){
     var movieTitle = req.body.movieTitle;
 	var apiKey = req.body.apiKey;
@@ -30,15 +31,12 @@ app.post('/submitMovie', function(req, res){
 		pathname: '/api/public/v1.0/movies.json',
 		query: { apikey:apiKey, q:movieTitle, page_limit:pageLimit }
 	}
+    //creates a url to be sent to rotten tomatoes API
 	var rottenUrl = url.format(options);
-	console.log(rottenUrl);
-	//request(rottenUrl).pipe(res);
-
 	request(rottenUrl, function(error, response, body){
 		if (!error && response.statusCode == 200) {
-			console.log(body);
+            //Sends the parsed data from rotten tomatoes to ejs template
 			var parsedData = JSON.parse(body);
-			console.log(parsedData['movies'][0]);
             res.render('movieResults',{movieTitle: parsedData['movies'][0]})
 		}
 
