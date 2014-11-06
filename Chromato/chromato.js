@@ -1,6 +1,8 @@
-var express = require('express'); var bodyParser =
-require('body-parser');
-
+var express = require('express');
+var bodyParser = require('body-parser');
+var http = require('http');
+var url = require('url');
+var request = require('request');
 var app = express.createServer();
 app.use(bodyParser());
 //app.use(bodyParser.urlencoded());
@@ -10,9 +12,6 @@ app.configure(function() {
     app.set('views', __dirname + '/views');
     app.set('view engine', 'ejs');
 });
-var http = require('http');
-var url = require('url');
-var request = require('request');
 
 app.get('/', function(req, res){
     /*var html = '<form action="/" method="post">' +
@@ -30,6 +29,33 @@ app.get('/', function(req, res){
     console.log("/");
     res.render('submit');
 });
+
+app.get('/submit', function(req, res){
+    /*var html = '<form action="/" method="post">' +
+               'Welcome to Chromato:' +
+               '<br>' +
+               '<input type="text" name="movieTitle" placeholder="Movie Title" />' +
+                '<br>' +
+               '<input type="text" name="apiKey" placeholder="Api Key" />' +
+               '<br>' +
+               '<input type="text" name="page_limit" placeholder="page limit" />'+
+               '<br>' +
+               '<button type="submit">Submit</button>' +
+            '</form>';*/
+
+    console.log("/submit");
+
+    res.redirect('/login');
+//    res.render('submit', {user: "Connor"});
+});
+
+app.get('/login', function(req, res){
+
+    console.log("/login");
+
+});
+
+
 app.post('/', function(req, res){
     var movieTitle = req.body.movieTitle;
 	var apiKey = req.body.apiKey;
