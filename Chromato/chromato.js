@@ -1,16 +1,21 @@
-var express = require('express'); var bodyParser = 
-require('body-parser'); 
+var express = require('express'); var bodyParser =
+require('body-parser');
 
 var app = express.createServer();
-app.use(bodyParser()); 
+app.use(bodyParser());
 //app.use(bodyParser.urlencoded());
 //app.use(bodyParser.json());
+
+app.configure(function() {
+    app.set('views', __dirname + '/views');
+    app.set('view engine', 'ejs');
+});
 var http = require('http');
 var url = require('url');
 var request = require('request');
 
 app.get('/', function(req, res){
-    var html = '<form action="/" method="post">' +
+    /*var html = '<form action="/" method="post">' +
                'Welcome to Chromato:' +
 			   '<br>' +
                '<input type="text" name="movieTitle" placeholder="Movie Title" />' +
@@ -20,19 +25,19 @@ app.get('/', function(req, res){
 			   '<input type="text" name="page_limit" placeholder="page limit" />'+
                '<br>' +
                '<button type="submit">Submit</button>' +
-            '</form>';
-               
-    res.send(html);
+            '</form>';*/
+
+    res.render('index');
 });
 app.post('/', function(req, res){
     var movieTitle = req.body.movieTitle;
 	var apiKey = req.body.apiKey;
-    var pageLimit = req.body.page_limit;	
+    var pageLimit = req.body.page_limit;
  	options = {
 		protocol: "http:",
 		host: 'api.rottentomatoes.com',
 		pathname: '/api/public/v1.0/movies.json',
-		query: { apikey:apiKey, q:movieTitle, page_limit:pageLimit } 
+		query: { apikey:apiKey, q:movieTitle, page_limit:pageLimit }
 	}
 	var rottenUrl = url.format(options);
 	console.log(rottenUrl);
