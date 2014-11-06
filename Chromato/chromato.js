@@ -32,7 +32,7 @@ app.post('/submitMovie', function(req, res){
 	}
 	var rottenUrl = url.format(options);
 	console.log(rottenUrl);
-	request(rottenUrl).pipe(res);
+	//request(rottenUrl).pipe(res);
 
 	request(rottenUrl, function(error, response, body){
 		if (!error && response.statusCode == 200) {
@@ -44,8 +44,5 @@ app.post('/submitMovie', function(req, res){
 
 	});
 
-   // var html = 'Movie Title is: ' + movieTitle + '.<br>' +
-    //         '<a href="/">Try again.</a>';
-    //res.send(html);
 });
 app.listen(80);
