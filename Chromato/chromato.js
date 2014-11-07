@@ -4,7 +4,7 @@ var http = require('http');
 var url = require('url');
 var request = require('request');
 var app = express();
-var api = require('./api.js');
+var apikey = require('./api.js');
 
 //app.use(bodyParser());
 app.use(bodyParser.urlencoded({ extended: false }))
