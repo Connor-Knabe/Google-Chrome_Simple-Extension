@@ -6,7 +6,6 @@ var request = require('request');
 var app = express();
 var apikey = require('./apikey.js');
 
-//app.use(bodyParser());
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json());
 
@@ -24,13 +23,12 @@ app.get('/', function(req, res){
 //When the user submits the form the first time they are taken to this new movieResults.ejs page
 app.post('/submitMovie', function(req, res){
     var movieTitle = req.body.movieTitle;
-	var apiKey = req.body.apiKey;
     var pageLimit = req.body.page_limit;
  	options = {
 		protocol: "http:",
 		host: 'api.rottentomatoes.com',
 		pathname: '/api/public/v1.0/movies.json',
-		query: { apikey:apiKey, q:movieTitle, page_limit:pageLimit }
+		query: { apikey:apikey.apiKey, q:movieTitle, page_limit:pageLimit }
 	}
     //creates a url to be sent to rotten tomatoes API
 	var rottenUrl = url.format(options);
@@ -44,4 +42,4 @@ app.post('/submitMovie', function(req, res){
 	});
 
 });
-app.listen(1337);
+app.listen(80);
