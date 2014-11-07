@@ -1,3 +1,7 @@
+var imported = document.createElement('script');
+imported.src = '/api.js';
+document.head.appendChild(imported);
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var http = require('http');
